@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'sqlite3'
 gem 'puma', '~> 3.0'
@@ -21,6 +20,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
 group :production do
   gem 'rails_12factor'
   gem 'pg'
