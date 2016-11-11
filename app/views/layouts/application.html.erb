@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YelpDemo</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/bootstrap' %>
+  </head>
+
+  <body>
+    <%= render '/layouts/navbar'%>
+    <div class="container-fluid">
+      <%= link_to "About", pages_about_path %>
+      <%= link_to "Contact", pages_contact_path %>
+      <%= yield %>
+      <%= render '/layouts/footer' %>
+    </div>
+  </body>
+</html>
