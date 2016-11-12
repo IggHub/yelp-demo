@@ -12,8 +12,8 @@
   <body>
     <%= render '/layouts/navbar'%>
     <div class="container-fluid">
-      <%= link_to "About", pages_about_path %>
-      <%= link_to "Contact", pages_contact_path %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
       <%= render '/layouts/footer' %>
     </div>
