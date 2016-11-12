@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'fog'
 gem 'figaro'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug', platform: :mri
