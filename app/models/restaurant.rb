@@ -1,4 +1,4 @@
 class Restaurant < ApplicationRecord
   mount_uploader :image, ImageUploader
-  has_many :reviews, dependent: :destroy
+  has_many :reviews
 end
