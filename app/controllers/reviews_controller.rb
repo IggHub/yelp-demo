@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :set_restaurant
-
+  before_action :check_user, except: [:index, :show]
   # GET /reviews
   # GET /reviews.json
   def index
@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.html { redirect_to restaurant_path(@restaurant), notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -54,7 +54,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to restaurant_path(@restaurant), notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,6 +67,12 @@ class ReviewsController < ApplicationController
 
     def set_restaurant
       @restaurant = Restaurant.find(params[:restaurant_id])
+    end
+
+    def check_user
+      unless (@review.user == current_user) || (current_user.admin?)
+        redirect_to root_path, message: "You need to be review original writer to change it"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
