@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :set_restaurant
-  before_action :check_user, except: [:index, :show]
+  before_action :check_user, only: [:update, :edit, :destroy]
   # GET /reviews
   # GET /reviews.json
   def index
@@ -70,8 +70,8 @@ class ReviewsController < ApplicationController
     end
 
     def check_user
-      unless (@review.user == current_user) || (current_user.admin?)
-        redirect_to root_path, message: "You need to be review original writer to change it"
+      unless (@review.user == current_user || current_user.admin?)
+        redirect_to root_url, alert: "Sorry you don't have access to this review"
       end
     end
 
