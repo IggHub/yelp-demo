@@ -4,4 +4,5 @@ FactoryGirl.define do
     rating {Faker::Number.between(1,5)}
     sequence(:comment) {|n| "Test review number #{n}"}
   end
+
 end
