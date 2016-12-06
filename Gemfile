@@ -18,6 +18,16 @@ gem 'searchkick'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails', '~> 4.7.0'
+end
+
+group :test do
+  gem 'faker', '~> 1.6.6'
+  gem 'capybara', '~> 2.10.2'
+  gem 'database_cleaner', '~> 1.5.3'
+  gem 'launchy', '~> 2.4.3'
+  gem 'selenium-webdriver', '~> 3.0.3'  
 end
 
 group :development do
