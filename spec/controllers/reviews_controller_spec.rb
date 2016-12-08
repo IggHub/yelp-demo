@@ -1,13 +1,26 @@
 require 'rails_helper'
 
 describe ReviewsController do
+=begin
   describe 'GET #index' do
-    it 'populates an array of all reviews'
-    it 'renders the :index template'
-  end
 
-  #describe 'GET #show' do
-  #end
+    it 'populates an array of all reviews' do
+      review1 = create(:review)
+      review2 = create(:review)
+      review3 = create(:review)
+      get :index
+      expect(assigns(:reviews)).to match_array(reviews)
+    end
+
+    it 'renders the :index template' do
+      expect(response).to render_template :index
+    end
+  end
+=end
+
+  describe 'GET #show' do
+
+  end
 
   describe 'GET #new' do
     it 'assigns new review to @review'
